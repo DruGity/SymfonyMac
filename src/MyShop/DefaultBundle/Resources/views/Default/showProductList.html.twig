@@ -1,0 +1,84 @@
+{% extends "@MyShopDefault/Default/layout.html.twig" %}
+
+
+
+{% block body %}
+
+    <div class="content_top">
+            <div class="heading">
+            <h3>Список товаров</h3>
+            </div>
+            <div class="see">
+                <p><a href="{{ path("myshop.category_list") }}">Выбрать категорию</a></p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    
+          <div class="section group">
+            {% for product in productList %}
+                <div class="grid_1_of_4 images_1_of_4">
+                    {% for photo in product.getPhotos() %}
+                        <a href="{{ path("myshop.product_info", {id:product.getId()}) }}">
+                     <img src="/photos/{{ photo.getSmallFileName() }}" class="img-responsive " alt="">
+                      </a>
+
+                      {% else %}
+                        <a href="{{ path("my_shop_admin.product_photo_list", {idProduct:product.getId()}) }}">
+                        <img src="/images/no-picture.png" class="img-responsive" alt="">
+                        </a>
+                    {% endfor %}
+                    
+                     <a href="{{ path("myshop.product_info", {id:product.getId()}) }}"><h2>{{ product.getModel() }}</h2></a>
+                     <h3>Категория: <b>{{product.getCategory().getName()}}</b></h3>
+                    <div class="price-details">
+                       <div class="price-number">
+                            <p><span class="rupees">${{product.getPrice()}}</span></p>
+                        </div>
+                            {% if is_granted('ROLE_CUSTOMER') %}
+                                <div class="add-cart">                              
+                                    <h4><a href="{{ path('myshop.add_product_to_basket', {idProduct:product.id}) }}">В Корзину</a></h4>
+                                 </div>
+                                {% else %}
+                                 <div class="add-cart">
+                                     <h4><a href="#">Купить</a></h4>
+                                 </div>
+                            {% endif %}
+
+                             <div class="clear"></div>
+                    </div>
+                     
+                </div>
+                {% endfor %}
+
+            </div>
+            <div style = "margin: 0 auto; text-align: center;" >
+                   {{ knp_pagination_render(productList) }}
+            </div>
+{% endblock %}
+
+
+
+
+
+
+
+{#
+
+<h2>Список товаров</h2>
+    <ul>
+    {% for product in productList %}
+        <li>
+            {{ product.getModel() }} <b>{{ product.getPrice() }}</b> 
+            <br />Категория: <b>{{product.getCategory().getName()}}</b>
+            <br />
+            <a href="{{ path("myshop.product_info", {id:product.getId()}) }}">Характеристики товара</a>
+            <br />
+            <a href="{{ path("myshop.product_comments", {id:product.getId()}) }}">Отзывы о товаре</a> 
+        </li>
+        <br />
+    {% else %}
+        Добавьте Продукты!
+    {% endfor %}
+    </ul>
+
+    #}

@@ -1,0 +1,108 @@
+myshop.product_info:
+    path:     /{id}
+    defaults: { _controller: MyShopDefaultBundle:Default:showProduct }
+    methods: [GET]
+    requirements:
+        id: \d+
+
+myshop.main_page:
+    path:    / 
+    defaults: { _controller: MyShopDefaultBundle:Default:index }
+
+myshop.product_list:
+    path: /product/list/{page}
+    defaults: { _controller: MyShopDefaultBundle:Default:showProductList, page: 1  }
+
+myshop.product_comments:
+    path: /product/comments/{id}
+    defaults: { _controller: MyShopDefaultBundle:Default:showComment }
+    requirements:
+        id: \d+
+
+myshop.category_list:
+    path: /category/list
+    defaults: { _controller: MyShopDefaultBundle:Default:showCategoryList }
+
+my_shop.product_list_by_category:
+    path: /category/{id_category}/product/list/{page}
+    defaults: { _controller: MyShopDefaultBundle:Default:listByCategory, page: 1 }
+    requirements:
+        id_category: \d+
+
+myshop.api_product:
+    path: /api/product/{id}
+    defaults: { _controller: MyShopDefaultBundle:API/REST/Product:details }
+    requirements:
+        id: \d+
+
+myshop.api_products:
+    path: /api/products
+    defaults: { _controller: MyShopDefaultBundle:API/REST/Product:list }
+    
+myshop.api_photos:
+    path: /api/photos/
+    defaults: { _controller: MyShopDefaultBundle:API/REST/Product:photo }
+
+myshop.api_photo_details:
+    path: /api/photo/{idProduct}
+    defaults: { _controller: MyShopDefaultBundle:API/REST/Product:photoDetails }
+    requirements:
+        idProduct: \d+
+
+myshop.api_list:
+    path: /api/list
+    defaults: {_controller: MyShopDefaultBundle:API/REST/ApiList:listApi}
+
+myshop.guzzle_client_rest:
+    path: client/rest
+    defaults: {_controller: MyShopDefaultBundle:Default:guzzleClient}
+
+myshop.registration:
+    path: customer/regestration
+    defaults: {_controller: MyShopDefaultBundle:Customer:registration}
+
+myshop.login:
+    path: customer/login
+    defaults: {_controller: MyShopDefaultBundle:Customer:login}
+
+myshop.basket:
+    path: /basket
+    defaults: {_controller: MyShopDefaultBundle:Basket:index}
+
+myshop.order_confirm:
+    path: /basket/confirm
+    defaults: { _controller: MyShopDefaultBundle:Basket:confirm }
+
+myshop.orders_history:
+      path: /orders/history/
+      defaults: { _controller: MyShopDefaultBundle:Basket:historyOrder }
+
+myshop.products_in_history:
+      path: /orders/{id}/products/
+      defaults: { _controller: MyShopDefaultBundle:Basket:orderProducts }
+      requirements:
+          id: \d+
+
+myshop.basket_recalculation:
+    path: /basket/recalculation
+    defaults: { _controller: MyShopDefaultBundle:Basket:recalculationCurrentOrder }
+    methods: [POST]
+
+myshop.remove_product_from_basket:
+    path: /basket/product/{id}/remove
+    defaults: { _controller: MyShopDefaultBundle:Basket:removeProductFromBasket }
+    requirements:
+        id: \d+
+
+myshop.add_product_to_basket:
+    path: /basket/product/{idProduct}/add
+    defaults: { _controller: MyShopDefaultBundle:Basket:addProductToBasket }
+    requirements:
+        idProduct: \d+
+
+myshop.logout:
+    path: customer/logout
+
+myshop.page:
+    path:  /page/{pageKey}
+    defaults: {_controller: MyShopDefaultBundle:Page:index} #этот роут держать на последнем месте

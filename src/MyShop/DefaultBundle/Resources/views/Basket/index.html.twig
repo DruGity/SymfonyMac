@@ -1,0 +1,23 @@
+
+    {% block cart %}
+        {% if order.products|length > 0 %}
+
+        <div class="cart">
+                <p><span>Корзина:</span><div id="dd" class="wrapper-dropdown-2">
+
+                        <ul class="dropdown">
+                                <li>У вас нет товаров в корзине</li>
+                        </ul></div></p>
+
+                    <ol><b>Количество Товаров - {{ order.getTotalCount() }}</b> </ol>
+                    <ol><b>Сумма: ${{ order.getTotalPrice() }}</b> </ol>
+
+                <a href="{{ path('myshop.order_confirm') }}">Перейти в корзину</a>
+                </ul>
+
+        </div>
+        {% endif %}
+            {% endblock %}
+
+
+

@@ -1,0 +1,175 @@
+login:
+    path: /login
+    defaults: { _controller: MyShopAdminBundle:Login:login }
+
+my_shop_admin.index:
+    path:     /
+    defaults: { _controller: MyShopAdminBundle:Default:index }
+
+my_shop_admin.product_add:
+    path:   /product/add
+    defaults: { _controller: MyShopAdminBundle:Product:add }
+
+my_shop_admin.test:
+    path:   /test
+    defaults: { _controller: MyShopAdminBundle:Default:test }
+    options:
+        expose: true
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+my_shop_admin.product_list:
+    path:   /product/list/{page}
+    defaults: { _controller: MyShopAdminBundle:Product:list, page: 1 }
+    requirements: 
+        page: \d+
+
+my_shop.admin.product_delete_ajax:
+    path:   /product/{id}/delete/ajax
+    defaults: { _controller: MyShopAdminBundle:Product:deleteAjax }
+    requirements:
+        id: \d+
+    options:
+        expose: true
+
+my_shop.admin.product_delete:
+    path:   /product/{id}/delete
+    defaults: { _controller: MyShopAdminBundle:Product:delete }
+    requirements:
+        id: \d+
+
+my_shop_admin.product_edit:
+    path:   /product/{id}/edit
+    defaults: { _controller: MyShopAdminBundle:Product:edit }
+    requirements:
+        id: \d+
+
+my_shop_admin.category_add:
+    path:   /category/add
+    defaults: { _controller: MyShopAdminBundle:Category:add }
+
+my_shop_admin.category_list:
+    path:   /category/list
+    defaults: { _controller: MyShopAdminBundle:Category:list }
+
+my_shop_admin.product_list_by_category:
+    path:   /category/{id_category}/product/list/{page}
+    defaults: { _controller: MyShopAdminBundle:Product:listByCategory, page: 1}
+    requirements:
+        id_category: \d+
+
+my_shop_admin.category_delete:
+    path:   /category/{id_category}/delete
+    defaults: { _controller: MyShopAdminBundle:Category:delete }
+    requirements:
+        id_category: \d+
+
+my_shop_admin.category_edit:
+    path:   /category/{id_category}/edit
+    defaults: { _controller: MyShopAdminBundle:Category:edit }
+    requirements:
+        id_category: \d+
+
+my_shop.admin.category_icon_delete:
+    path:   /category_icon/{id_category}/delete
+    defaults: { _controller: MyShopAdminBundle:Category:deleteIcon }
+    requirements:
+        id_category: \d+        
+
+my_shop_admin.product_photo_add:
+    path:   /product/{idProduct}/photo/add
+    defaults: { _controller: MyShopAdminBundle:ProductPhoto:add }
+    requirements:
+        idProduct: \d+
+
+my_shop_admin.product_photo_list:
+    path:   /product/{idProduct}/photos
+    defaults: { _controller: MyShopAdminBundle:ProductPhoto:list }
+    requirements:
+        idProduct: \d+
+
+my_shop_admin.product_photo_delete:
+    path:   /product/{id}/photo/delete
+    defaults: { _controller: MyShopAdminBundle:ProductPhoto:delete }
+    requirements:
+        id: \d+
+
+my_shop_admin.product_photo_edit:
+    path:   /product/{id}/photo/edit
+    defaults: { _controller: MyShopAdminBundle:ProductPhoto:edit }
+    requirements:
+        id: \d+
+
+my_shop_admin.user_add:
+    path: /user/add
+    defaults: { _controller: MyShopAdminBundle:User:add }
+
+my_shop_admin.load_some_users:
+    path: /load/some/users
+    defaults: { _controller: MyShopAdminBundle:Default:loadUsers}
+
+my_shop_admin.load_some_users:
+    path: /load/some/users
+    defaults: { _controller: MyShopAdminBundle:Default:loadUsers}    
+
+my_shop_admin.load_some_product:
+    path: /load/some/product
+    defaults: { _controller: MyShopAdminBundle:Default:loadProduct}    
+
+my_shop_admin.load_some_category:
+    path: /load/some/category
+    defaults: { _controller: MyShopAdminBundle:Default:loadCategory}   
+
+my_shop_admin.products_import_csv:
+    path:   /products/import/csv
+    defaults: { _controller: MyShopAdminBundle:ProductsLoader:importProducts }
+
+my_shop_admin.products_export_csv:
+    path:   /products/export/csv
+    defaults: { _controller: MyShopAdminBundle:ProductsLoader:exportProducts } 
+
+my_shop_admin.page_list:
+    path:   /pages
+    defaults: { _controller: MyShopAdminBundle:Page:index }
+
+my_shop_admin.page_add:
+    path:   /page/add
+    defaults: { _controller: MyShopAdminBundle:Page:add }
+
+myshop.admin_order_list:
+    path: /orders
+    defaults: {_controller: MyShopAdminBundle:Orders:index}
+
+myshop.admin_order_list_filter1:
+      path: /orders/filter/status/open
+      defaults: {_controller: MyShopAdminBundle:Orders:filter}
+
+myshop.admin_order_list_filter2:
+      path: /orders/filter/status/close
+      defaults: {_controller: MyShopAdminBundle:Orders:closeFilter}
+
+#myshop.admin_remove_product_from_order:
+ #   path: /order/{id}/product/remove/{idProduct}
+  #  defaults: {_controller: MyShopAdminBundle:Orders:productRemove}
+   # requirements:
+    #    idProduct: \d+
+     #   id: \d+
+
+myshop.admin_confirm_order:
+    path: /order/{id}/confirm
+    defaults: {_controller: MyShopAdminBundle:Orders:confirm}
+    requirements:
+        id: \d+
+
+my_shop_admin.page_edit:
+    path:   /page/{id}/edit
+    defaults: { _controller: MyShopAdminBundle:Page:edit }
+    requirements:
+        id: \d+
+
+my_shop_admin.page_delete:
+    path:   /page/{id}/delete
+    defaults: { _controller: MyShopAdminBundle:Page:delete }
+    requirements:
+        id: \d+

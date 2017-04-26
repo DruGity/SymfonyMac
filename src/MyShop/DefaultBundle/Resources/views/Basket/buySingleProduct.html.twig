@@ -1,0 +1,12 @@
+{% extends "@MyShopDefault/layout.html.twig" %}
+
+{% block body %}
+    <div>
+        <b>Оформление покупки товара</b><br />
+
+        <form method="POST" action="#">
+            {{ form_widget(form) }}
+            <input type="submit" value="Оформить заказ" />
+        </form>
+    </div>
+{% endblock %}

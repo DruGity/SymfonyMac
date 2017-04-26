@@ -1,0 +1,41 @@
+{% extends "@MyShopDefault/layout.html.twig" %}
+
+{% block body %}
+    <div>
+        <b>Товары в заказе:</b>
+
+        <fieldset>
+
+            <table border="1">
+                {% for product in order.products %}
+                <br />
+                <tr>
+                    <td>
+                        {% if product.idProduct is not null %}
+
+                            <a href="{{ path('myshop.product_info', {id:product.idProduct}) }}">
+                                {{ product.model }}
+                            </a>
+                        {% else %}
+                            {{ product.model }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        - {{ product.price }}&emsp;
+                    </td>
+                    <td>
+                        Кол-во - {{ product.count }} &emsp;
+                    </td>
+                    <td>
+                        Цена: {{ product.getSum() }}$
+                    </td>
+                </tr>
+            </table>
+            <hr />
+
+            {% endfor %}
+
+        </fieldset>
+
+    </div>
+{% endblock %}
