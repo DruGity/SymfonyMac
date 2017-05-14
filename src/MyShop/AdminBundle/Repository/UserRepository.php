@@ -10,4 +10,5 @@ namespace MyShop\AdminBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

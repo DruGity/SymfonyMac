@@ -85,6 +85,16 @@ class DefaultController extends Controller
     public function showCategoryListAction()
     {
         $categoryList = $this->getDoctrine()->getRepository("MyShopDefaultBundle:Category")->findAll();
+/*
+        $dql = "select c, p from MyShopDefaultBundle:Category c join c.productList p";
+
+        $query = $this->getDoctrine()->getManager()->createQuery($dql);
+
+        $paginator = $this->get("knp_paginator");
+        $categoryList = $paginator->paginate($query, $page, 4);*/
+
+
+
 
         return ["categoryList" => $categoryList];
     }
@@ -93,6 +103,7 @@ class DefaultController extends Controller
     {
         $dql = "select p, c from MyShopDefaultBundle:Product p join p.category c where c.id = :idCategory";
         $query = $this->getDoctrine()->getManager()->createQuery($dql)->setParameter("idCategory", $id_category);
+
         $paginator = $this->get("knp_paginator");
         $productList = $paginator->paginate($query, $page, 4);
 

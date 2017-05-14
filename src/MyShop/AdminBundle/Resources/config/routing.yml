@@ -16,8 +16,8 @@ my_shop_admin.test:
     options:
         expose: true
 
-fos_js_routing:
-    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+#fos_js_routing:
+ #   resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
 my_shop_admin.product_list:
     path:   /product/list/{page}
@@ -109,10 +109,6 @@ my_shop_admin.load_some_users:
     path: /load/some/users
     defaults: { _controller: MyShopAdminBundle:Default:loadUsers}
 
-my_shop_admin.load_some_users:
-    path: /load/some/users
-    defaults: { _controller: MyShopAdminBundle:Default:loadUsers}    
-
 my_shop_admin.load_some_product:
     path: /load/some/product
     defaults: { _controller: MyShopAdminBundle:Default:loadProduct}    
@@ -173,3 +169,4 @@ my_shop_admin.page_delete:
     defaults: { _controller: MyShopAdminBundle:Page:delete }
     requirements:
         id: \d+
+

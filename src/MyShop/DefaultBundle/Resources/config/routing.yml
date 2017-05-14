@@ -100,8 +100,18 @@ myshop.add_product_to_basket:
     requirements:
         idProduct: \d+
 
+myshop.confirm_email:
+  path: /email/confirm/{id}
+  defaults: { _controller: MyShopDefaultBundle:Customer:confirmUser}
+  requirements:
+      id: \d+
+
 myshop.logout:
     path: customer/logout
+
+myshop.search:
+    path:   /search
+    defaults: { _controller: MyShopDefaultBundle:Search:index, page: 1 }
 
 myshop.page:
     path:  /page/{pageKey}

@@ -13,9 +13,9 @@
             </div>
             <div class="clear"></div>
         </div>
-    
+
           <div class="section group">
-            {% for product in productList %}
+            {% for product in productList if productList is not empty %}
                 <div class="grid_1_of_4 images_1_of_4">
                     {% for photo in product.getPhotos() %}
                         <a href="{{ path("myshop.product_info", {id:product.getId()}) }}">
@@ -44,10 +44,15 @@
                                  </div>
                             {% endif %}
 
+
                              <div class="clear"></div>
                     </div>
                      
                 </div>
+                {% else %}
+
+                <br /> <H1>По вашему запросу ничего не найдено!</H1>
+
                 {% endfor %}
 
             </div>
@@ -55,30 +60,3 @@
                    {{ knp_pagination_render(productList) }}
             </div>
 {% endblock %}
-
-
-
-
-
-
-
-{#
-
-<h2>Список товаров</h2>
-    <ul>
-    {% for product in productList %}
-        <li>
-            {{ product.getModel() }} <b>{{ product.getPrice() }}</b> 
-            <br />Категория: <b>{{product.getCategory().getName()}}</b>
-            <br />
-            <a href="{{ path("myshop.product_info", {id:product.getId()}) }}">Характеристики товара</a>
-            <br />
-            <a href="{{ path("myshop.product_comments", {id:product.getId()}) }}">Отзывы о товаре</a> 
-        </li>
-        <br />
-    {% else %}
-        Добавьте Продукты!
-    {% endfor %}
-    </ul>
-
-    #}

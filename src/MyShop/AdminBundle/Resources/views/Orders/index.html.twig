@@ -40,8 +40,6 @@
         <hr />
     {% endfor %}
     <div style = "margin: 0 auto; text-align: center;" >
-       <div style = "margin: 0 auto; text-align: center;" >
-
-        </div>
+        {{ knp_pagination_render(ordersList) }}
     </div>
 {% endblock %}

@@ -16,15 +16,19 @@ class OrdersController extends Controller
 	/**
      * @Template()
     */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $page = $request->get("page", 0);
+
         //$ordersList = $this->getDoctrine()->getRepository('MyShopDefaultBundle:Orders')->findAll();
         // сделать через findBy() - сортировка + сделать пагинацию*/
 
 //        $orders = $this->getDoctrine()->getManager()->getRepository("MyShopDefaultBundle:Orders")
 //            ->findBy([], ["dateCreatedAt" => "desc"]);
-        $query = $this->getDoctrine()->getManager()->createQuery("select o from MyShopDefaultBundle:Orders o");
-        $ordersList = $query->getResult();
+        $query = $this->getDoctrine()->getManager()->createQuery("select o from MyShopDefaultBundle:Orders o WHERE o.status = 2");
+        $paginator = $this->get("knp_paginator");
+        $ordersList = $paginator->paginate($query, $page, 1);
+//        $ordersList = $query->getResult();
 
         $income = $this->fullIncome($ordersList); // подсчет дохода
 
@@ -34,11 +38,13 @@ class OrdersController extends Controller
         ];
     }
 
-    public function filterAction()
+    public function filterAction(Request $request)
     {
-
-        $query = $this->getDoctrine()->getManager()->createQuery("select o from MyShopDefaultBundle:Orders o where o.confirm = 2 ");
-        $ordersList = $query->getResult();
+        $page = $request->get("page", 0);
+        $query = $this->getDoctrine()->getManager()->createQuery("select o from MyShopDefaultBundle:Orders o where o.confirm = 2 and o.status = 2 ");
+        //$ordersList = $query->getResult();
+        $paginator = $this->get("knp_paginator");
+        $ordersList = $paginator->paginate($query, $page, 1);
 
         $income = $this->fullIncome($ordersList);
 
@@ -50,11 +56,14 @@ class OrdersController extends Controller
     }
 
 
-    public function  closeFilterAction()
+    public function  closeFilterAction(Request $request)
     {
+        $page = $request->get("page", 0);
 
-        $query = $this->getDoctrine()->getManager()->createQuery("select o from MyShopDefaultBundle:Orders o where o.confirm = 1 ");
-        $ordersList = $query->getResult();
+        $query = $this->getDoctrine()->getManager()->createQuery("select o from MyShopDefaultBundle:Orders o where o.confirm = 1 and o.status = 2 ");
+        $paginator = $this->get("knp_paginator");
+        $ordersList = $paginator->paginate($query, $page, 1);
+        //$ordersList = $query->getResult();
 
         $income = $this->fullIncome($ordersList);
 
@@ -84,7 +93,8 @@ class OrdersController extends Controller
         {
             $order->setConfirmStatus(Orders::STATUS_CONFIRMED);
             $manager->persist($order);
-            $manager->flush(); 
+            $manager->flush();
+
             $this->addFlash("success", "Заказ Подтвержден!");
 
             return $this->redirectToRoute("myshop.admin_order_list");

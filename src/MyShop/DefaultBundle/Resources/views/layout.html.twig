@@ -63,9 +63,12 @@
      			</ul>
 	     	</div>
 	     	<div class="search_box">
-	     		<form>
-	     			<input type="text" value="Поиск" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Поиск';}"><input type="submit" value="">
-	     		</form>
+
+				<form method = "GET" action="{{ path('myshop.search') }}" }}>
+					<input name = "searchKey" type="text" value="Поиск" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Поиск';}">
+					<input type="submit" value="">
+				</form>
+
 	     	</div>
 	     	<div class="clear"></div>
 	     </div>	     

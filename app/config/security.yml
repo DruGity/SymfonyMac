@@ -36,11 +36,11 @@ security:
             provider: db_provider
             anonymous: ~
             form_login:
-                login_path: login #можно относительным урлом или названием роута 
+                login_path: login #можно относительным урлом или названием роута
                 check_path: login
             logout:
-                path:   /logout
-                target: /admin/login
+                path:   logout
+                target: /
 
         shop_customer:
             provider: customer_provider

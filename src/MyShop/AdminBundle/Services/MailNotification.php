@@ -13,11 +13,13 @@ class MailNotification
     		$this->mailer = $mailer; 
    	}
 
-    public function sendEmail($mas)
+    public function sendEmail($mas, $email)
     {
 
         $message = new \Swift_Message();
-        $message->setTo("igorlessonhillel@gmail.com");
+
+        // $message->setTo("igorlessonhillel@gmail.com");
+        $message->setTo($email);
         $message->addFrom("Unknow_Hacker-spamer@hillel.com");
         $message->setBody($mas , "text/html" );
 

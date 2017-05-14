@@ -73,9 +73,6 @@ class Product
      *@ORM\Column(name="icon_file_name", type="string", length=255 )
      */
     /*private $iconFileName;*/
-    
-
-    
 
     /**
      * @var Category
@@ -93,6 +90,7 @@ class Product
      * @ORM\OneToMany(targetEntity="MyShop\DefaultBundle\Entity\ProductPhoto", mappedBy="product", cascade={"All"})
     */
     private $photos;
+
 
     public function __construct()
     {
