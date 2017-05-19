@@ -101,10 +101,13 @@ myshop.add_product_to_basket:
         idProduct: \d+
 
 myshop.confirm_email:
-  path: /email/confirm/{id}
+  path: /email/confirm/{str}
   defaults: { _controller: MyShopDefaultBundle:Customer:confirmUser}
-  requirements:
-      id: \d+
+
+myshop.go_to_email:
+  path: /confirm/your/email
+  defaults: { _controller: MyShopDefaultBundle:Customer:goToEmail}
+
 
 myshop.logout:
     path: customer/logout

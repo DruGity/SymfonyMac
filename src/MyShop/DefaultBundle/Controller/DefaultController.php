@@ -19,7 +19,10 @@ class DefaultController extends Controller
 	* @Template()
 	*/
     public function indexAction() // выводит шаблон index.html.twig
+
+
     {
+
         return [];
     }
 

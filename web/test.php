@@ -49,4 +49,30 @@ echo 'd';
 echo "<br />";
 }*/
 
-echo "<a href='$_SERVER[HTTP_HOST]'>$_SERVER[HTTP_HOST]</a>";
+//convert_uuencode
+//convert_uudecode
+
+//    echo "<a href='$_SERVER[HTTP_HOST]'>$_SERVER[HTTP_HOST]</a>";
+/*$str = "sg4fgdflg5";
+$coded = md5($str);
+echo $coded;*/
+
+$id = "34/";
+$email = "druggy3392@gmail.com";
+$rand = rand();
+$hash = $id . $email . $rand;
+
+$hashed = convert_uuencode($hash);
+$hash = convert_uudecode($hash);
+ $hash = explode("/", $hash);
+ $lol = "A,S";
+$hash = convert_uudecode($lol);
+
+
+
+
+print_r($hash);
+die();
+echo $coded;
+echo $decoded;
+echo "<br />";
