@@ -108,7 +108,6 @@ myshop.go_to_email:
   path: /confirm/your/email
   defaults: { _controller: MyShopDefaultBundle:Customer:goToEmail}
 
-
 myshop.logout:
     path: customer/logout
 

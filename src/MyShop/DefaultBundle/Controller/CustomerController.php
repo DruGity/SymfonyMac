@@ -56,11 +56,14 @@ class CustomerController extends Controller
 
            /* $this->addFlash("success", "Спасибо за регистрацию!");*/
             return $this->redirectToRoute("myshop.go_to_email");
+
+
+
         }
 
 
         return [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ];
     }
 
@@ -93,9 +96,8 @@ class CustomerController extends Controller
      */
     public function goToEmailAction()
     {
-        return [
 
-        ];
+        return [];
 
     }
 

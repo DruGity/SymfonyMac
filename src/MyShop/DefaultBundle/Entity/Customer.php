@@ -6,6 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use FOS\MessageBundle\Model\ParticipantInterface;
+//use FOS\UserBundle\Model\User as BaseUser;
+
+
 
 
 /**
@@ -14,7 +18,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="customer")
  * @ORM\Entity(repositoryClass="MyShop\DefaultBundle\Repository\CustomerRepository")
  */
-class Customer implements AdvancedUserInterface, \Serializable
+class Customer  implements AdvancedUserInterface, \Serializable, ParticipantInterface
 {
     /**
      * @var int

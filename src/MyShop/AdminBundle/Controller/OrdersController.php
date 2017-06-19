@@ -27,7 +27,7 @@ class OrdersController extends Controller
 //            ->findBy([], ["dateCreatedAt" => "desc"]);
         $query = $this->getDoctrine()->getManager()->createQuery("select o from MyShopDefaultBundle:Orders o WHERE o.status = 2");
         $paginator = $this->get("knp_paginator");
-        $ordersList = $paginator->paginate($query, $page, 1);
+        $ordersList = $paginator->paginate($query, $page, 2);
 //        $ordersList = $query->getResult();
 
         $income = $this->fullIncome($ordersList); // подсчет дохода
@@ -44,7 +44,7 @@ class OrdersController extends Controller
         $query = $this->getDoctrine()->getManager()->createQuery("select o from MyShopDefaultBundle:Orders o where o.confirm = 2 and o.status = 2 ");
         //$ordersList = $query->getResult();
         $paginator = $this->get("knp_paginator");
-        $ordersList = $paginator->paginate($query, $page, 1);
+        $ordersList = $paginator->paginate($query, $page, 2);
 
         $income = $this->fullIncome($ordersList);
 
@@ -62,7 +62,7 @@ class OrdersController extends Controller
 
         $query = $this->getDoctrine()->getManager()->createQuery("select o from MyShopDefaultBundle:Orders o where o.confirm = 1 and o.status = 2 ");
         $paginator = $this->get("knp_paginator");
-        $ordersList = $paginator->paginate($query, $page, 1);
+        $ordersList = $paginator->paginate($query, $page, 2);
         //$ordersList = $query->getResult();
 
         $income = $this->fullIncome($ordersList);
